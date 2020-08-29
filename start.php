@@ -17,4 +17,6 @@ value из catalog_product_entity_text
 в которых sku есть '11'
  */
 
-require_once DIR . '/vendor/autoload.php';
+require __DIR__."\autoload.php";
+$one = new Model();
+$one->setArrayDate(2);
