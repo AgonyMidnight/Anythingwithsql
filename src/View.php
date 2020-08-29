@@ -6,10 +6,10 @@ class View
     private $model;
     public $controller;
 
-    public function __construct()
+    public function __construct(Controller $controller, Model $model)
     {
-        $this->model = new Model();
-        $this->controller = new Controller();
+        $this->model = $model;
+        $this->controller = $controller;
     }
 
     public function showDate()

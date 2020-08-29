@@ -4,9 +4,9 @@
 class Controller
 {
     private $model;
-    public function __construct()
+    public function __construct(Model $model)
     {
-        $this->model = new Model();
+        $this->model = $model;
     }
     public function setTypequery(int $number){
         $this->model->setArrayDate($number);

@@ -18,6 +18,9 @@ value из catalog_product_entity_text
  */
 
 require_once __DIR__."/vendor/autoload.php";
-$view = new View();
-$view->controller->setTypequery($_GET['switch']);
+$model = new Model();
+$controller = new Controller($model);
+$view = new View($controller, $model);
+$controller->setTypequery($_GET['switch']);
+$view->showDate();
 

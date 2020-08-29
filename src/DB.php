@@ -68,6 +68,3 @@ class DB
     }
 
 }
-
-$one = new DB();
-$one->getDate();
