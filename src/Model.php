@@ -3,13 +3,13 @@
 class Model
 {
     private $obj_DB;
-    private $arrayDate;
+    public $arrayDate;
     private $view;
 
     public function __construct()
     {
-        $obj_DB = new DB();
-        $objView = new View();
+        $this->obj_DB = new DB();
+        $this->view = new View();
     }
 
     /**
@@ -20,7 +20,7 @@ class Model
         switch ($number) {
             case 1:
             {
-                //$a[] = $this->obj_DB->getPageLayout();
+                $this->arrayDate[] = array();
                 foreach ($this->obj_DB->getPageLayout() as $value) {
                     $this->arrayDate[] = $value;
                 }
@@ -29,13 +29,15 @@ class Model
                 foreach ($this->arrayDate as $value) {
                     echo "{$i} {$value['entity_id']} {$value['sku']} <br>";
                 }
+                $this->view->showDate();
                 break;
             }
             case 2:{
-                $a[] = null;
+                $this->arrayDate[] = array();
                 foreach ($this->obj_DB->getDate() as $value){
-                    $a[] = $value;
+                    $this->arrayDate[] = $value;
                 }
+                $this->view->showDate();
                 break;
             }
             default:

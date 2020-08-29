@@ -17,6 +17,7 @@ value из catalog_product_entity_text
 в которых sku есть '11'
  */
 
-require __DIR__."\autoload.php";
-$one = new Model();
-$one->setArrayDate(2);
+require_once __DIR__."/vendor/autoload.php";
+$view = new View();
+$view->controller->setTypequery($_GET['switch']);
+

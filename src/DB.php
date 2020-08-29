@@ -22,7 +22,7 @@ class DB
         }
     }
 
-    public function getPageLayout() : array
+    public function getPageLayout(): array
     {
         $array [] = null;
         $query = "SELECT entity_id, sku, created_at, value, attribute_code FROM catalog_product_entity_text cpet
@@ -31,15 +31,13 @@ class DB
             WHERE attribute_code = 'page_layout'";
         $sth = $this->conn->prepare($query);
         $sth->execute();
-        while($result = $sth->fetch(PDO::FETCH_BOTH)){
-            //echo $result;
-            print_r($result);
+        while ($result = $sth->fetch(PDO::FETCH_BOTH)) {
             $array[] = $result;
         }
         return $array;
     }
 
-    public function getDate() : array
+    public function getDate(): array
     {
         $array[] = null;
         $query = "SELECT * FROM catalog_product_entity_text JOIN catalog_product_entity cpe
@@ -47,14 +45,29 @@ class DB
                     WHERE created_at > '2017-09-20 16:03:28'";
         $sth = $this->conn->prepare($query);
         $sth->execute();
-        while($result = $sth->fetch(PDO::FETCH_BOTH)){
-            //echo $result;
-            print_r($result);
+        while ($result = $sth->fetch(PDO::FETCH_BOTH)) {
             $array[] = $result;
         }
         return $array;
     }
 
+    public function getFindNumber()
+    {
+        $array[] = null;
+        $query = "SELECT entity_id, sku, created_at, value FROM catalog_product_entity_text cpet
+              JOIN catalog_product_entity cpe on cpet.row_id = cpe.row_id
+              JOIN eav_attribute eav on eav.attribute_id = cpet.attribute_id
+               WHERE LOCATE('11', cpe.sku)";
+        $sth = $this->conn->prepare($query);
+        $sth->execute();
+        while ($result = $sth->fetch(PDO::FETCH_BOTH)) {
+            $array[] = $result;
+        }
+        return $array;
+
+    }
+
 }
+
 $one = new DB();
 $one->getDate();
