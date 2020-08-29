@@ -14,7 +14,15 @@ class View
 
     public function showDate()
     {
-        print_r($this->model->arrayDate);
+        echo '<table border="1">';
+        foreach ($this->model->arrayDate as $el) {
+            echo '<tr>';
+            foreach ($el as $e) {
+                echo '<td>' . $e . '</td>';
+            }
+            echo '</tr>';
+        }
+        echo '</table>';
     }
 
 
